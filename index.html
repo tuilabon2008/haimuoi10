@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chúc Mừng 20/10 & Thi THPT Quốc Gia</title>
+    <title>Ngày của những người tuyệt nhất trên đời nè!!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -181,21 +181,22 @@
             background: linear-gradient(to right, var(--primary), var(--secondary));
         }
 
-        .score-input {
+        .user-info {
             margin: 20px 0;
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 15px;
         }
 
-        .score-input label {
+        .user-info label {
             font-size: 1.2rem;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             color: var(--dark);
             font-weight: 600;
         }
 
-        .score-input-container {
+        .user-input-container {
             display: flex;
             gap: 10px;
             align-items: center;
@@ -203,7 +204,7 @@
             flex-wrap: wrap;
         }
 
-        .score-input input {
+        .user-input {
             padding: 12px 20px;
             font-size: 1.1rem;
             border: 2px solid var(--accent);
@@ -214,7 +215,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .score-input input:focus {
+        .user-input:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
@@ -390,6 +391,29 @@
             }
         }
 
+        .falling-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: var(--primary);
+            opacity: 0;
+            animation: heartFall 5s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes heartFall {
+            0% {
+                top: -10%;
+                opacity: 1;
+                transform: translateX(0) rotate(0deg);
+            }
+            100% {
+                top: 110%;
+                opacity: 0;
+                transform: translateX(calc(var(--drift) * 50px)) rotate(360deg);
+            }
+        }
+
         footer {
             margin-top: 20px;
             color: white;
@@ -429,6 +453,20 @@
             color: var(--primary);
         }
 
+        .music-info {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-size: 0.8rem;
+            max-width: 200px;
+            text-align: center;
+            display: none;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.2rem;
@@ -446,13 +484,23 @@
                 font-size: 1.1rem;
             }
             
-            .score-input-container {
+            .user-input-container {
                 flex-direction: column;
             }
             
-            .score-input input {
+            .user-input {
                 width: 100%;
                 max-width: 250px;
+            }
+
+            .music-control {
+                top: 10px;
+                right: 10px;
+            }
+
+            .music-info {
+                top: 70px;
+                right: 10px;
             }
         }
 
@@ -476,6 +524,11 @@
     <div class="music-control" id="musicControl">
         <i class="fas fa-music"></i>
     </div>
+    <div class="music-info" id="musicInfo">
+        <p>Để thêm nhạc của bạn:</p>
+        <p>1. Đổi tên file nhạc thành <strong>music.mp3</strong></p>
+        <p>2. Đặt file trong cùng thư mục với file HTML</p>
+    </div>
     
     <div class="container">
         <h1>Chúc Mừng Ngày Phụ Nữ Việt Nam 20/10</h1>
@@ -492,16 +545,22 @@
             <h2>Chúc Thi THPT Quốc Gia & Đỗ Đại Học</h2>
             <p>Gửi đến các sĩ tử lời chúc tốt đẹp nhất cho kỳ thi quan trọng sắp tới. Hãy tin vào bản thân, ôn tập thật tốt và giữ tinh thần thật thoải mái!</p>
             
-            <div class="score-input">
-                <label for="score">Nhập điểm mong muốn của bạn:</label>
-                <div class="score-input-container">
-                    <input type="number" id="score" min="0" max="10" step="0.1" placeholder="Ví dụ: 8.5">
-                    <button class="btn" id="wishBtn">Gửi lời chúc</button>
+            <div class="user-info">
+                <div class="user-input-container">
+                    <label for="name">Tên của bạn:</label>
+                    <input type="text" id="name" class="user-input" placeholder="Nhập tên của bạn">
                 </div>
+                
+                <div class="user-input-container">
+                    <label for="score">Tổng điểm khối thi (0-30):</label>
+                    <input type="number" id="score" min="0" max="30" step="0.1" class="user-input" placeholder="Ví dụ: 25.5">
+                </div>
+                
+                <button class="btn" id="wishBtn">Gửi lời chúc</button>
             </div>
             
             <div class="result" id="result">
-                <h3>Lời chúc đặc biệt dành cho bạn!</h3>
+                <h3>Lời chúc đặc biệt dành cho <span id="userName"></span>!</h3>
                 <p id="wishMessage"></p>
             </div>
         </div>
@@ -513,8 +572,18 @@
         <p>Made with <i class="fas fa-heart" style="color: var(--primary);"></i> for Vietnamese Women | 20/10/2023</p>
     </footer>
 
+    <!-- 
+        HƯỚNG DẪN THÊM NHẠC:
+        1. Đổi tên file nhạc của bạn thành "music.mp3"
+        2. Đặt file trong cùng thư mục với file HTML này
+        3. Nếu muốn dùng file nhạc khác, thay đổi đường dẫn trong thẻ audio bên dưới
+    -->
     <audio id="backgroundMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        <!-- Thay thế đường dẫn bên dưới bằng file nhạc của bạn -->
+        <source src="music.mp3" type="audio/mpeg">
+        <!-- Dự phòng nếu trình duyệt không hỗ trợ -->
+        <source src="music.ogg" type="audio/ogg">
+        Trình duyệt của bạn không hỗ trợ phát nhạc.
     </audio>
 
     <script>
@@ -597,6 +666,35 @@
             }
         }
 
+        // Tạo trái tim rơi liên tục
+        function createFallingHearts() {
+            const heartCount = 15;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('falling-heart');
+                heart.innerHTML = '❤️';
+                
+                // Vị trí ngẫu nhiên
+                const left = Math.random() * 100;
+                const animationDelay = Math.random() * 5;
+                const size = Math.random() * 1 + 0.8;
+                const drift = Math.random() * 2 - 1;
+                
+                heart.style.left = `${left}%`;
+                heart.style.animationDelay = `${animationDelay}s`;
+                heart.style.fontSize = `${size}rem`;
+                heart.style.setProperty('--drift', drift);
+                
+                document.body.appendChild(heart);
+                
+                // Xóa sau khi hiệu ứng kết thúc
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+        }
+
         // Tạo hiệu ứng lấp lánh
         function createSparkle(x, y) {
             const sparkle = document.createElement('div');
@@ -646,23 +744,31 @@
 
         // Xử lý sự kiện gửi lời chúc
         document.getElementById('wishBtn').addEventListener('click', function() {
+            const nameInput = document.getElementById('name');
             const scoreInput = document.getElementById('score');
             const resultDiv = document.getElementById('result');
             const wishMessage = document.getElementById('wishMessage');
+            const userName = document.getElementById('userName');
             
-            if (scoreInput.value && scoreInput.value >= 0 && scoreInput.value <= 10) {
+            if (nameInput.value && scoreInput.value && scoreInput.value >= 0 && scoreInput.value <= 30) {
+                const name = nameInput.value;
                 const score = parseFloat(scoreInput.value);
+                
+                // Hiển thị tên người dùng
+                userName.textContent = name;
                 
                 // Tạo lời chúc dựa trên điểm số
                 let message = '';
-                if (score >= 9) {
-                    message = `Chúc mừng! Với điểm số mơ ước ${score} điểm, bạn chắc chắn sẽ đỗ vào trường đại học top đầu mà mình mong muốn. Hãy tự tin và tỏa sáng trong kỳ thi sắp tới nhé! 🌟`;
-                } else if (score >= 8) {
-                    message = `Điểm số ${score} thật tuyệt vời! Bạn hoàn toàn có khả năng đỗ vào những trường đại học chất lượng. Hãy giữ vững phong độ và đạt được kết quả cao nhất! ✨`;
-                } else if (score >= 7) {
-                    message = `Điểm số ${score} là một mục tiêu rất thực tế và khả thi! Với sự cố gắng và ôn luyện đúng hướng, bạn chắc chắn sẽ đạt được và đỗ đại học như ý muốn! 💪`;
+                if (score >= 27) {
+                    message = `Chúc mừng ${name}! Với tổng điểm mơ ước ${score} điểm, bạn chắc chắn sẽ đỗ vào trường đại học top đầu mà mình mong muốn. Hãy tự tin và tỏa sáng trong kỳ thi sắp tới nhé! 🌟`;
+                } else if (score >= 24) {
+                    message = `Điểm số ${score} của ${name} thật tuyệt vời! Bạn hoàn toàn có khả năng đỗ vào những trường đại học chất lượng. Hãy giữ vững phong độ và đạt được kết quả cao nhất! ✨`;
+                } else if (score >= 21) {
+                    message = `Điểm số ${score} là một mục tiêu rất thực tế và khả thi ${name} ơi! Với sự cố gắng và ôn luyện đúng hướng, bạn chắc chắn sẽ đạt được và đỗ đại học như ý muốn! 💪`;
+                } else if (score >= 18) {
+                    message = `${name} ơi, điểm số ${score} là khởi đầu tốt! Hãy tiếp tục nỗ lực, ôn tập có trọng tâm và tin tưởng vào bản thân. Thành công sẽ đến với những ai không ngừng cố gắng! 🌈`;
                 } else {
-                    message = `Điểm số ${score} là khởi đầu tốt! Hãy tiếp tục nỗ lực, ôn tập có trọng tâm và tin tưởng vào bản thân. Thành công sẽ đến với những ai không ngừng cố gắng! 🌈`;
+                    message = `Đừng lo lắng ${name} nhé! Điểm số ${score} chỉ là bước khởi đầu. Hãy tập trung ôn luyện và tin tưởng vào bản thân, bạn sẽ đạt được kết quả tốt trong kỳ thi sắp tới! 🍀`;
                 }
                 
                 wishMessage.textContent = message;
@@ -688,7 +794,7 @@
                     }, i * 100);
                 }
             } else {
-                alert('Vui lòng nhập điểm số hợp lệ (từ 0 đến 10)');
+                alert('Vui lòng nhập đầy đủ tên và điểm số hợp lệ (từ 0 đến 30)');
             }
         });
 
@@ -708,7 +814,17 @@
         // Xử lý nhạc nền
         const musicControl = document.getElementById('musicControl');
         const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicInfo = document.getElementById('musicInfo');
         let musicPlaying = false;
+        
+        // Hiển thị hướng dẫn khi di chuột vào nút nhạc
+        musicControl.addEventListener('mouseenter', function() {
+            musicInfo.style.display = 'block';
+        });
+        
+        musicControl.addEventListener('mouseleave', function() {
+            musicInfo.style.display = 'none';
+        });
         
         musicControl.addEventListener('click', function() {
             if (musicPlaying) {
@@ -716,9 +832,20 @@
                 musicControl.innerHTML = '<i class="fas fa-music"></i>';
                 musicControl.style.background = 'rgba(255, 255, 255, 0.9)';
             } else {
-                backgroundMusic.play();
-                musicControl.innerHTML = '<i class="fas fa-pause"></i>';
-                musicControl.style.background = 'rgba(233, 30, 99, 0.9)';
+                // Thử phát nhạc, nếu lỗi sẽ thông báo
+                const playPromise = backgroundMusic.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // Nhạc phát thành công
+                        musicControl.innerHTML = '<i class="fas fa-pause"></i>';
+                        musicControl.style.background = 'rgba(233, 30, 99, 0.9)';
+                        musicPlaying = true;
+                    }).catch(error => {
+                        // Lỗi khi phát nhạc
+                        alert('Không thể phát nhạc. Hãy chắc chắn rằng file music.mp3 nằm trong cùng thư mục với file HTML này.');
+                        console.error('Lỗi phát nhạc:', error);
+                    });
+                }
             }
             musicPlaying = !musicPlaying;
         });
@@ -727,6 +854,9 @@
         window.addEventListener('load', function() {
             createConfetti();
             createFloatingHearts();
+            
+            // Tạo trái tim rơi liên tục
+            setInterval(createFallingHearts, 2000);
             
             // Tạo hiệu ứng chào mừng
             setTimeout(() => {
