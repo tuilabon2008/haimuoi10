@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ngày của những người tuyệt nhất trên đời nè!!</title>
+    <title>20/10</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -414,6 +414,88 @@
             }
         }
 
+        .redirect-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .redirect-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .redirect-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.5s ease;
+        }
+
+        .redirect-overlay.active .redirect-content {
+            transform: scale(1);
+        }
+
+        .redirect-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .redirect-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .redirect-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .redirect-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .redirect-btn.primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .redirect-btn.secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .redirect-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
         footer {
             margin-top: 20px;
             color: white;
@@ -502,6 +584,11 @@
                 top: 70px;
                 right: 10px;
             }
+
+            .redirect-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -525,9 +612,27 @@
         <i class="fas fa-music"></i>
     </div>
     <div class="music-info" id="musicInfo">
-       // <p>Để thêm nhạc của bạn:</p>
-       // <p>1. Đổi tên file nhạc thành <strong>music.mp3</strong></p>
-    //    <p>2. Đặt file trong cùng thư mục với file HTML</p>
+    //    <p>Để thêm nhạc của bạn:</p>
+    //    <p>1. Đổi tên file nhạc thành <strong>music.mp3</strong></p>
+      //  <p>2. Đặt file trong cùng thư mục với file HTML</p>
+    </div>
+
+    <div class="redirect-overlay" id="redirectOverlay">
+        <div class="redirect-content">
+            <h3>Bất ngờ dành cho bạn! 💝</h3>
+            <p>Bạn muốn xem video TikTok đặc biệt hay nhận lời chúc đặc biệt từ chúng tôi?</p>
+            <div class="redirect-buttons">
+                <button class="redirect-btn primary" id="tiktokBtn">
+                    <i class="fab fa-tiktok"></i> Xem TikTok
+                </button>
+                <button class="redirect-btn secondary" id="specialWishBtn">
+                    <i class="fas fa-gift"></i> Lời chúc đặc biệt
+                </button>
+                <button class="redirect-btn secondary" id="cancelBtn">
+                    <i class="fas fa-times"></i> Ở lại trang
+                </button>
+            </div>
+        </div>
     </div>
     
     <div class="container">
@@ -717,8 +822,8 @@
 
         // Xử lý sự kiện click nút bất ngờ
         document.getElementById('surpriseBtn').addEventListener('click', function() {
-            // Hiển thị thông điệp
-            alert('Chúc bạn một ngày 20/10 thật ý nghĩa và hạnh phúc! Bạn xứng đáng với tất cả những điều tốt đẹp nhất! ❤️');
+            // Hiển thị overlay chuyển hướng
+            document.getElementById('redirectOverlay').classList.add('active');
             
             // Tạo nhiều pháo hoa
             for (let i = 0; i < 25; i++) {
@@ -740,6 +845,33 @@
             setTimeout(() => {
                 document.body.style.background = 'linear-gradient(135deg, #ffafbd, #ffc3a0, #a8edea, #fed6e3)';
             }, 5000);
+        });
+
+        // Xử lý nút TikTok
+        document.getElementById('tiktokBtn').addEventListener('click', function() {
+            // Thay thế URL bên dưới bằng link TikTok của bạn
+            window.open('https://vt.tiktok.com/ZSUbmcWDv/', '_blank');
+            
+            // Đóng overlay
+            document.getElementById('redirectOverlay').classList.remove('active');
+            
+            // Hiển thị thông báo
+            alert('Chúc bạn xem video vui vẻ! Quay lại trang để tiếp tục trải nghiệm nhé! ❤️');
+        });
+
+        // Xử lý nút lời chúc đặc biệt
+        document.getElementById('specialWishBtn').addEventListener('click', function() {
+            // Hiển thị lời chúc đặc biệt
+            alert('Bạn là một người phụ nữ tuyệt vời! Chúc bạn luôn xinh đẹp, hạnh phúc và thành công trong mọi lĩnh vực của cuộc sống. Hãy luôn tỏa sáng! ✨💖');
+            
+            // Đóng overlay
+            document.getElementById('redirectOverlay').classList.remove('active');
+        });
+
+        // Xử lý nút hủy
+        document.getElementById('cancelBtn').addEventListener('click', function() {
+            // Đóng overlay
+            document.getElementById('redirectOverlay').classList.remove('active');
         });
 
         // Xử lý sự kiện gửi lời chúc
@@ -872,4 +1004,3 @@
     </script>
 </body>
 </html>
-
