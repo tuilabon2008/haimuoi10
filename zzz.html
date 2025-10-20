@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng 20/10 & Thi THPT Quốc Gia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #e91e63;
+            --secondary: #ff4081;
+            --accent: #f8bbd9;
+            --light: #fff5f8;
+            --dark: #880e4f;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0, #a8edea, #fed6e3);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            color: #333;
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 900px;
+            width: 90%;
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.92);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+            margin: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: -1;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 10%;
+            width: 80%;
+            height: 4px;
+            background: linear-gradient(to right, transparent, var(--primary), transparent);
+            border-radius: 2px;
+        }
+
+        h2 {
+            color: var(--dark);
+            margin: 25px 0 15px;
+            font-size: 1.8rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--secondary), transparent);
+        }
+
+        .flower-decoration {
+            font-size: 3.5rem;
+            margin: 20px 0;
+            color: var(--primary);
+            animation: float 3s ease-in-out infinite;
+            text-shadow: 0 0 10px rgba(233, 30, 99, 0.3);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(5deg); }
+            66% { transform: translateY(-10px) rotate(-5deg); }
+        }
+
+        .message {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin: 20px 0;
+            text-align: justify;
+            padding: 0 15px;
+            position: relative;
+        }
+
+        .message::first-letter {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-weight: bold;
+            float: left;
+            line-height: 1;
+            margin-right: 5px;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(233, 30, 99, 0.2);
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background-color: rgba(255, 192, 203, 0.3);
+            z-index: -1;
+            transform: skewX(-15deg);
+        }
+
+        .wish-section {
+            background: linear-gradient(135deg, var(--light), #fff);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wish-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
+
+        .score-input {
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .score-input label {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .score-input-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .score-input input {
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border: 2px solid var(--accent);
+            border-radius: 50px;
+            width: 200px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .score-input input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3);
+            transform: scale(1.05);
+        }
+
+        .btn {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(233, 30, 99, 0.6);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:active {
+            transform: translateY(-2px);
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: none;
+            animation: fadeIn 0.8s ease;
+            border: 2px dashed var(--primary);
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result.show {
+            display: block;
+        }
+
+        .result h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .result p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .firework {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--secondary);
+            animation: explode 1.2s ease-out forwards;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(25);
+                opacity: 0;
+            }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            opacity: 0;
+            animation: confettiFall 5s linear forwards;
+            z-index: 0;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                top: -10%;
+                opacity: 1;
+                transform: rotate(0deg);
+            }
+            100% {
+                top: 110%;
+                opacity: 0;
+                transform: rotate(720deg);
+            }
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--primary);
+            opacity: 0;
+            animation: heartFloat 8s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes heartFloat {
+            0% {
+                top: 110%;
+                opacity: 1;
+                transform: translateX(0) rotate(0deg);
+            }
+            100% {
+                top: -10%;
+                opacity: 0;
+                transform: translateX(calc(var(--move) * 100px)) rotate(360deg);
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: white;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: sparkle 1.5s ease-out forwards;
+            z-index: 2;
+        }
+
+        @keyframes sparkle {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1) rotate(180deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(0) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        footer {
+            margin-top: 20px;
+            color: white;
+            text-align: center;
+            font-size: 1rem;
+            padding: 15px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+            background: white;
+        }
+
+        .music-control i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .flower-decoration {
+                font-size: 2.8rem;
+            }
+            
+            .message {
+                font-size: 1.1rem;
+            }
+            
+            .score-input-container {
+                flex-direction: column;
+            }
+            
+            .score-input input {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="music-control" id="musicControl">
+        <i class="fas fa-music"></i>
+    </div>
+    
+    <div class="container">
+        <h1>Chúc Mừng Ngày Phụ Nữ Việt Nam 20/10</h1>
+        
+        <div class="flower-decoration">🌸 💐 🌹 🌺 🌷 💮 🏵️</div>
+        
+        <div class="message">
+            <p>Nhân ngày <span class="highlight">Phụ nữ Việt Nam 20/10</span>, xin gửi những lời chúc tốt đẹp nhất đến tất cả những người phụ nữ tuyệt vời. Chúc các bà, các mẹ, các chị, các em và tất cả phụ nữ Việt Nam luôn <span class="highlight">xinh đẹp, hạnh phúc, thành công</span> trong cuộc sống và công việc.</p>
+            
+            <p>Đặc biệt, gửi lời chúc đến các nữ sĩ tử đang chuẩn bị bước vào kỳ thi THPT Quốc gia quan trọng. Chúc các em <span class="highlight">tự tin, bình tĩnh, và đạt kết quả cao nhất</span> trong kỳ thi sắp tới!</p>
+        </div>
+        
+        <div class="wish-section">
+            <h2>Chúc Thi THPT Quốc Gia & Đỗ Đại Học</h2>
+            <p>Gửi đến các sĩ tử lời chúc tốt đẹp nhất cho kỳ thi quan trọng sắp tới. Hãy tin vào bản thân, ôn tập thật tốt và giữ tinh thần thật thoải mái!</p>
+            
+            <div class="score-input">
+                <label for="score">Nhập điểm mong muốn của bạn:</label>
+                <div class="score-input-container">
+                    <input type="number" id="score" min="0" max="10" step="0.1" placeholder="Ví dụ: 8.5">
+                    <button class="btn" id="wishBtn">Gửi lời chúc</button>
+                </div>
+            </div>
+            
+            <div class="result" id="result">
+                <h3>Lời chúc đặc biệt dành cho bạn!</h3>
+                <p id="wishMessage"></p>
+            </div>
+        </div>
+        
+        <button class="btn" id="surpriseBtn">Bất ngờ dành cho bạn!</button>
+    </div>
+    
+    <footer>
+        <p>Made with <i class="fas fa-heart" style="color: var(--primary);"></i> for Vietnamese Women | 20/10/2023</p>
+    </footer>
+
+    <audio id="backgroundMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Tạo hiệu ứng pháo hoa
+        function createFirework(x, y) {
+            const firework = document.createElement('div');
+            firework.classList.add('firework');
+            firework.style.left = `${x}px`;
+            firework.style.top = `${y}px`;
+            
+            // Màu sắc ngẫu nhiên
+            const colors = ['#e91e63', '#ff4081', '#f50057', '#c2185b', '#ad1457'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            firework.style.boxShadow = `0 0 15px ${randomColor}`;
+            
+            document.body.appendChild(firework);
+            
+            // Xóa sau khi hiệu ứng kết thúc
+            setTimeout(() => {
+                firework.remove();
+            }, 1200);
+        }
+
+        // Tạo confetti
+        function createConfetti() {
+            const confettiCount = 50;
+            const colors = ['#e91e63', '#ff4081', '#f50057', '#c2185b', '#ff80ab', '#f8bbd9'];
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                
+                // Vị trí ngẫu nhiên
+                const left = Math.random() * 100;
+                const animationDelay = Math.random() * 5;
+                const size = Math.random() * 10 + 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                confetti.style.left = `${left}%`;
+                confetti.style.animationDelay = `${animationDelay}s`;
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                confetti.style.backgroundColor = color;
+                confetti.style.setProperty('--move', Math.random() * 2 - 1);
+                
+                document.body.appendChild(confetti);
+                
+                // Xóa sau khi hiệu ứng kết thúc
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+
+        // Tạo trái tim bay
+        function createFloatingHearts() {
+            const heartCount = 10;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('floating-heart');
+                heart.innerHTML = '❤️';
+                
+                // Vị trí ngẫu nhiên
+                const left = Math.random() * 100;
+                const animationDelay = Math.random() * 8;
+                const size = Math.random() * 1 + 0.5;
+                
+                heart.style.left = `${left}%`;
+                heart.style.animationDelay = `${animationDelay}s`;
+                heart.style.fontSize = `${size}rem`;
+                heart.style.setProperty('--move', Math.random() * 2 - 1);
+                
+                document.body.appendChild(heart);
+                
+                // Xóa sau khi hiệu ứng kết thúc
+                setTimeout(() => {
+                    heart.remove();
+                }, 8000);
+            }
+        }
+
+        // Tạo hiệu ứng lấp lánh
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            sparkle.style.left = `${x}px`;
+            sparkle.style.top = `${y}px`;
+            
+            // Kích thước ngẫu nhiên
+            const size = Math.random() * 10 + 5;
+            sparkle.style.width = `${size}px`;
+            sparkle.style.height = `${size}px`;
+            
+            document.body.appendChild(sparkle);
+            
+            // Xóa sau khi hiệu ứng kết thúc
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1500);
+        }
+
+        // Xử lý sự kiện click nút bất ngờ
+        document.getElementById('surpriseBtn').addEventListener('click', function() {
+            // Hiển thị thông điệp
+            alert('Chúc bạn một ngày 20/10 thật ý nghĩa và hạnh phúc! Bạn xứng đáng với tất cả những điều tốt đẹp nhất! ❤️');
+            
+            // Tạo nhiều pháo hoa
+            for (let i = 0; i < 25; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight;
+                    createFirework(x, y);
+                }, i * 100);
+            }
+            
+            // Tạo confetti
+            createConfetti();
+            
+            // Tạo trái tim bay
+            createFloatingHearts();
+            
+            // Đổi màu nền
+            document.body.style.background = 'linear-gradient(135deg, #ffafbd, #ffc3a0, #a8edea, #fed6e3, #d4fc79)';
+            setTimeout(() => {
+                document.body.style.background = 'linear-gradient(135deg, #ffafbd, #ffc3a0, #a8edea, #fed6e3)';
+            }, 5000);
+        });
+
+        // Xử lý sự kiện gửi lời chúc
+        document.getElementById('wishBtn').addEventListener('click', function() {
+            const scoreInput = document.getElementById('score');
+            const resultDiv = document.getElementById('result');
+            const wishMessage = document.getElementById('wishMessage');
+            
+            if (scoreInput.value && scoreInput.value >= 0 && scoreInput.value <= 10) {
+                const score = parseFloat(scoreInput.value);
+                
+                // Tạo lời chúc dựa trên điểm số
+                let message = '';
+                if (score >= 9) {
+                    message = `Chúc mừng! Với điểm số mơ ước ${score} điểm, bạn chắc chắn sẽ đỗ vào trường đại học top đầu mà mình mong muốn. Hãy tự tin và tỏa sáng trong kỳ thi sắp tới nhé! 🌟`;
+                } else if (score >= 8) {
+                    message = `Điểm số ${score} thật tuyệt vời! Bạn hoàn toàn có khả năng đỗ vào những trường đại học chất lượng. Hãy giữ vững phong độ và đạt được kết quả cao nhất! ✨`;
+                } else if (score >= 7) {
+                    message = `Điểm số ${score} là một mục tiêu rất thực tế và khả thi! Với sự cố gắng và ôn luyện đúng hướng, bạn chắc chắn sẽ đạt được và đỗ đại học như ý muốn! 💪`;
+                } else {
+                    message = `Điểm số ${score} là khởi đầu tốt! Hãy tiếp tục nỗ lực, ôn tập có trọng tâm và tin tưởng vào bản thân. Thành công sẽ đến với những ai không ngừng cố gắng! 🌈`;
+                }
+                
+                wishMessage.textContent = message;
+                resultDiv.classList.add('show');
+                
+                // Tạo hiệu ứng
+                createConfetti();
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(() => {
+                        const x = Math.random() * window.innerWidth;
+                        const y = Math.random() * window.innerHeight;
+                        createFirework(x, y);
+                    }, i * 200);
+                }
+                
+                // Tạo hiệu ứng lấp lánh xung quanh nút
+                const rect = this.getBoundingClientRect();
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        const x = rect.left + Math.random() * rect.width;
+                        const y = rect.top + Math.random() * rect.height;
+                        createSparkle(x, y);
+                    }, i * 100);
+                }
+            } else {
+                alert('Vui lòng nhập điểm số hợp lệ (từ 0 đến 10)');
+            }
+        });
+
+        // Xử lý sự kiện di chuột
+        document.addEventListener('mousemove', function(e) {
+            // Tạo hiệu ứng pháo hoa nhỏ theo chuột
+            if (Math.random() > 0.97) {
+                createFirework(e.clientX, e.clientY);
+            }
+            
+            // Tạo hiệu ứng lấp lánh theo chuột
+            if (Math.random() > 0.95) {
+                createSparkle(e.clientX, e.clientY);
+            }
+        });
+
+        // Xử lý nhạc nền
+        const musicControl = document.getElementById('musicControl');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        let musicPlaying = false;
+        
+        musicControl.addEventListener('click', function() {
+            if (musicPlaying) {
+                backgroundMusic.pause();
+                musicControl.innerHTML = '<i class="fas fa-music"></i>';
+                musicControl.style.background = 'rgba(255, 255, 255, 0.9)';
+            } else {
+                backgroundMusic.play();
+                musicControl.innerHTML = '<i class="fas fa-pause"></i>';
+                musicControl.style.background = 'rgba(233, 30, 99, 0.9)';
+            }
+            musicPlaying = !musicPlaying;
+        });
+
+        // Khởi tạo khi trang tải xong
+        window.addEventListener('load', function() {
+            createConfetti();
+            createFloatingHearts();
+            
+            // Tạo hiệu ứng chào mừng
+            setTimeout(() => {
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        const x = Math.random() * window.innerWidth;
+                        const y = Math.random() * window.innerHeight;
+                        createFirework(x, y);
+                    }, i * 150);
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
